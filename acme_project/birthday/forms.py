@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 # Импортируем класс ошибки валидации.
 from django.core.exceptions import ValidationError
 # Импортируем класс модели Birthday.
-from .models import Birthday
+from .models import Birthday, Congratulation
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 
@@ -60,3 +60,10 @@ class CustomUserCreationForm(UserCreationForm):
     # Так этот класс будет не перезаписан, а расширен.
     class Meta(UserCreationForm.Meta):
         model = User
+
+
+class CongratulationForm(forms.ModelForm):
+    
+    class Meta:
+        model = Congratulation
+        fields = ('text',)
